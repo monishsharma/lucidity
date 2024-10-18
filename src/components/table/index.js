@@ -7,7 +7,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-const CustomTable = ({ cols = [], data }) => {
+const CustomTable = ({ cols = [], data, isAdmin }) => {
   return (
     <Paper sx={{ width: "100%", overflow: "hidden" }}>
       <TableContainer sx={{ maxHeight: 540 }}>
@@ -26,7 +26,7 @@ const CustomTable = ({ cols = [], data }) => {
               return (
                 <TableRow hover key={`rowData_${rowIndex}`} >
                   {cols.map((col, colIndex) => (
-                    <TableCell  style={{background: item.isDisabled ? "grey" : "white"}} align="center" key={`colData_${rowIndex}_${colIndex}`}>
+                    <TableCell  style={{background: item.isDisabled && isAdmin() ? "grey" : "white"}} align="center" key={`colData_${rowIndex}_${colIndex}`}>
                       {col.render({ ...item, id: rowIndex + 1 })}
                     </TableCell>
                   ))}

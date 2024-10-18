@@ -11,6 +11,7 @@ import WidgetContainer from "../../components/widgetContainer";
 const Admin = ({ data, getInventoryDataConnect, setDataConnect }) => {
 
   const location = useLocation();
+  const isAdmin = () => location.pathname === "/admin";
   const [isLoading, setIsLoading] = useState(false);
   const [editableItem, setEditableItem] = useState(data || []);
   const [isOpen, setIsOpen] = useState(false);
@@ -128,7 +129,7 @@ const Admin = ({ data, getInventoryDataConnect, setDataConnect }) => {
         <WidgetContainer
             inventoryData={editableItem}
         />
-        <CustomTable cols={InventoryConstant({ edit, deleteItem, location, disableItem })} data={editableItem} />
+        <CustomTable isAdmin={isAdmin} cols={InventoryConstant({ edit, deleteItem, isAdmin, disableItem })} data={editableItem} />
     </div>
   );
 };

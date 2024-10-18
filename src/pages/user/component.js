@@ -7,6 +7,7 @@ import WidgetContainer from '../../components/widgetContainer';
 
 const User = ({data, getInventoryDataConnect}) => {
 
+    const isAdmin = () => location.pathname === "/admin";
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(false);
 
@@ -31,7 +32,7 @@ const User = ({data, getInventoryDataConnect}) => {
             <WidgetContainer
                 inventoryData={data}
             />
-            <CustomTable cols={InventoryConstant({ location })} data={data} />
+            <CustomTable isAdmin={isAdmin} cols={InventoryConstant({ isAdmin })} data={data} />
         </div>
     )
 }

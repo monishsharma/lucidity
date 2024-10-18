@@ -7,11 +7,9 @@ import ActionButton from "../components/actionButtons";
 export const constant = ({
     edit,
     deleteItem,
-    location,
+    isAdmin,
     disableItem
 }) => {
-
-    const isAdmin = () => location.pathname === "/admin";
 
     const editHandler = (selectedRow) => {
         edit(selectedRow)
